@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DataBase</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="./three.min.js"></script>
+    <script src="src/config.js"></script>
+    <script src="src/app.js"></script>
+    <script src="./libs/OrbitControls.js"></script>
+    <script src="./libs/Pabhoz/Utilities.js"></script>
+    <script src="./libs/Stats.js"></script>
+</head>
+
+<body>
+
+     <!-- GUI -->
+     <div id="options">
+            Borrar
+        </div>
+
+        <div id="edit">
+                Editar
+            </div>
+        <!-- END GUI -->
+
+    <div id="app">
+        <canvas id="appCanvas" width="100%" height="100%"></canvas>
+    </div>
+    <script>
+        var items;
+
+        //Vea, vamos a leer ese archivo
+        fetch(`${API}Item.php`)
+            .then(function (response) {
+                //Lo que usted lea, transformelo a JSON
+                return response.json();
+            })
+            .then(function (myJson) { //Cuando ya lo tenga transformado
+                //imprima el JSON
+                items = myJson;
+                webGLStart();
+            });
+    </script>
+</body>
+
+</html>
